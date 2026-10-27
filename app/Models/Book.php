@@ -3,23 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Book extends Model
 {
-    private $books = [
-        [
-            'title' => 'Pulang',
-            'description' => 'Petualangan seorang pemuda.',
-            'price' => 40000,
-            'stock' => 25,
-            'cover_photo' => 'pulang.jpg',
-            'genre_id' => 1,
-            'author_id' => 1,
-        ],
+    protected $fillable = [
+        'title',
+        'description',
+        'price',
+        'stock',
+        'cover_photo',
+        'genre_id',
+        'author_id',
     ];
 
-    public function getBooks()
+    public function author(): BelongsTo
     {
-        return $this->books;
+        return $this->belongsTo(Author::class);
     }
 }
