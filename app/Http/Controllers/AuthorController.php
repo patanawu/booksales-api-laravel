@@ -10,6 +10,9 @@ class AuthorController extends Controller
     {
         $authors = Author::with('books')->get();
 
-        return view('authors', compact('authors'));
+        return response()->json([
+            'success' => true,
+            'data' => $authors,
+        ]);
     }
 }
