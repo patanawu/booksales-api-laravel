@@ -38,4 +38,17 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     Route::post('/authors', [AdminController::class, 'storeAuthor'])
         ->name('authors.store');
+        // Update dan Delete Genre
+Route::put('/genres/{genre}', [AdminController::class, 'updateGenre'])
+    ->name('genres.update');
+
+Route::delete('/genres/{genre}', [AdminController::class, 'destroyGenre'])
+    ->name('genres.destroy');
+
+// Update dan Delete Author
+Route::put('/authors/{author}', [AdminController::class, 'updateAuthor'])
+    ->name('authors.update');
+
+Route::delete('/authors/{author}', [AdminController::class, 'destroyAuthor'])
+    ->name('authors.destroy');
 });
